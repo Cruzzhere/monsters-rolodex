@@ -10,6 +10,7 @@ class App extends Component {
       monsters: [],
      searchFeild:''
     };
+    
   }
 
   componentDidMount() {
@@ -17,6 +18,9 @@ class App extends Component {
       .then(response => response.json())
       .then(users => this.setState({monsters: users}))
   }
+  handleChange=(e)=> {
+     this.setState({ searchFeild: e.target.value }) // by using this arrow function our java script compiler will declare all the methods executing with the class method
+    }
   render() {
     const { monsters, searchFeild } = this.state;
     const filteredMonsters = monsters.filter(monster =>
@@ -24,14 +28,18 @@ class App extends Component {
      )
     return (
       <div className="App">
-        <header className="App-header">
-          <SearchBox placeholder='Search Monsters' handleChange= {e => this.setState({ searchFeild: e.target.value })} />
+        <h1>Monsters RoloDex</h1>
+        {/* <header className="App-header"> */}
+          <SearchBox placeholder='Search Monsters' handleChange= {this.handleChange} />
           <CardList monsters={ filteredMonsters }/> 
           {/* //callthe cardlist uding card list component */}
-        </header>    
+        {/* </header>     */}
     </div>
     )
   }
 }
 
 export default App;
+
+
+
