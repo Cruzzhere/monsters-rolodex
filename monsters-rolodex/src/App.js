@@ -41,5 +41,6 @@ class App extends Component {
 
 export default App;
 
+// if our page is not working we must upgrade our packages
 
-
+// use command "yarn install"
